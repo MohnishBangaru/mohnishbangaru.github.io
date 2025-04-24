@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohnish Bangaru | Resume</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p>Loading Mohnish Bangaru’s Portfolio...</p>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content" style="display: none;">
+
+    <header>
+      <h1>Mohnish Bangaru</h1>
+    </header>
+
+    <nav>
+      <a href="#about">Hello!</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Get in touch!</a>
+    </nav>
+
+    <!-- About: Scrolls freely -->
+    <section id="about" class="fade-in slide-up about-section">
+      <div class="about-content">
+        <div class="about-text">
+          <h2 class="typewrite">Hello, I'm Mohnish</h2>
+          <p>An aspiring Graduate Student with a passion for building AI systems that create real-world impact. I'm currently pursuing my Master’s in Computer Engineering at NYU Tandon, where I specialize in deep learning, efficient model deployment, and vision-language models.</p>
+  
+          <p>Before NYU, I worked at KPMG, leading projects that automated financial reporting and anomaly detection at scale. Now, I spend my time developing models that run smoothly even on constrained hardware — like quantized ResNet-50 on Raspberry Pi — and designing QLoRA-tuned LLMs for smarter, lighter instruction following.</p>
+          
+          <p>But I'm more than code and compute — I find joy in photography, painting, and playing basketball. I believe that a blend of creativity and analytical thinking helps me design more thoughtful and effective ML solutions.</p>
+
+          <p>If you're looking for someone who thrives at the intersection of engineering and insight — someone who can scale models and ideas alike — I'm always up for a conversation.</p>
+        </div>
+        <div class="about-image">
+          <img src="assets/profile.jpg" alt="Mohnish Bangaru" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Snap Scroll Container -->
+    <div id="snap-scroll">
+
+      <section id="experience" class="fade-in slide-up">
+        <h2 class="typewrite">Experience</h2>
+        <ul>
+          <li>
+            <strong>Graduate Student Data Scientist – New York University</strong><br>
+            <em>Sep 2023 – Present</em><br>
+            • Built ETL pipelines for 30,000+ survey strengths, cutting processing time by 50%.<br>
+            • Applied NLP to improve student feedback quality by 25%.<br>
+            • Deployed ML models with Docker/Kubernetes, reducing A/B test time by 60%.<br>
+            • Led onboarding for new hires in ML best practices.
+          </li>
+          <li>
+            <strong>Data Scientist – KPMG</strong><br>
+            <em>Apr 2022 – May 2023</em><br>
+            • Automated Python/ML reporting workflows, saving 264+ hours yearly.<br>
+            • Led team to enhance anomaly detection in trading systems, reducing false positives by 40%.
+          </li>
+          <li>
+            <strong>Analyst – KPMG</strong><br>
+            <em>Jan 2021 – Apr 2022</em><br>
+            • Revamped SQL for real-time data, improving execution speed by 30%.<br>
+            • Built REST APIs for auto-deployment, increasing deployment frequency by 15%.
+          </li>
+          <a class="button" href="assets/resume.pdf" download>Download Resume</a>
+        </ul>
+      </section>
+
+      <section id="projects" class="fade-in slide-up">
+        <h2 class="typewrite">Projects</h2>
+      
+        <div class="project-grid">
+      
+          <!-- Recent & Graduate-Level Projects -->
+          <div class="project-card">
+            <h3>Integrating Quantization with Residual Connections (Ongoing)</h3>
+            <p>Currently exploring the synergy between quantization-aware training and residual connection design in deep neural networks. The goal is to maintain representational capacity while drastically improving hardware efficiency — ideal for edge deployment.</p>
+            <p><strong>Focus:</strong> Accuracy Retention · Efficient Inference · Low-Resource DNNs</p>
+          </div>
+
+          <div class="project-card">
+            <h3>Efficient Deep Learning for Edge Deployment</h3>
+            <p>Trimmed ResNet-50 using quantization-aware training and residual connections, reducing model size by 50% and memory by 65%, achieving 10x faster on-device inference.</p>
+            <p><strong>Skills:</strong> Parameter Reduction, Quantization, Efficient DNN Training</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Medical Expert Question-Answering Model</h3>
+            <p>Fine-tuned a Vision-Language Transformer on 5,000 MIMIC-CXR scans + reports, achieving 96% accuracy in condition identification and expert text generation.</p>
+            <p><strong>Skills:</strong> Multimodal Fine-Tuning, LLMOps, Vision-Language Models</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Fine-Tuning LLMs using QLoRA</h3>
+            <p>Fine-tuned Pythia 6.9B/12B with Alpaca dataset using QLoRA and tested LoRA ranks (1–16). Achieved optimal loss at rank 8 without major qualitative differences across ranks.</p>
+            <p><strong>Skills:</strong> Fine-Tuning, LLMs, Experimentation, Deep Learning</p>
+          </div>
+      
+          <!-- Undergraduate & Exploratory Projects -->
+          <div class="project-card">
+            <h3>Impala Chatbot</h3>
+            <p>Built a customizable chatbot platform that allows consumers to define response logic for different domains or industries.</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Voice Automation for YouTube</h3>
+            <p>Developed a Python-based automation tool to control YouTube via voice commands.</p>
+            <p><strong>Skills:</strong> Python, Voice Commands</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Visual COVID Dashboard</h3>
+            <p>Created an interactive dashboard to visualize COVID-19 data trends using R.</p>
+            <p><strong>Skills:</strong> R Programming, Data Visualization</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Stock Market Prediction</h3>
+            <p>Built a predictive model using S&P 500 market data and time series analysis techniques.</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Exoplanet Hunting</h3>
+            <p>Analyzed NASA Kepler telescope time series data to identify exoplanet candidates using signal detection algorithms.</p>
+          </div>
+      
+          <div class="project-card">
+            <h3>Automated Pothole Detection</h3>
+            <p>Developed a computer vision model to detect potholes from road images, contributing to smart city infrastructure solutions.</p>
+          </div>
+      
+      </section>
+      
+
+      <section id="education" class="fade-in slide-up">
+        <h2 class="typewrite">Education</h2>
+        <ul>
+          <li>
+            <strong>New York University, Tandon School of Engineering</strong><br>
+            Master of Science in Computer Engineering – GPA: 3.8/4.0<br>
+            <em>Sep 2023 – May 2025</em>
+          </li>
+          <li>
+            <strong>SRM Institute of Science and Technology</strong><br>
+            B.Tech in Computer Science and Engineering – GPA: 3.8/4.0<br>
+            <em>Jul 2017 – May 2021</em>
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="fade-in slide-up">
+        <h2 class="typewrite">Get in touch!</h2>
+        <p>Email: <a href="mailto:mohnishbangaru@nyu.edu">mohnishbangaru@nyu.edu</a></p>
+        <p>Phone: <a href="tel:+13478568262">(347) 856-8262</a></p>
+        <p>🔗 <a href="https://linkedin.com/in/mohnishbangaru" target="_blank">LinkedIn</a> | <a href="https://github.com/mohnishbangaru" target="_blank">GitHub</a></p>
+      </section>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Mohnish Bangaru. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- Script to handle loader and scroll-to-top -->
+  <script>
+    // Typing animation for section headers
+    function typeText(el, speed = 50) {
+      const text = el.textContent;
+      el.textContent = "";
+      let i = 0;
+  
+      const interval = setInterval(() => {
+        el.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, speed);
+    }
+  
+    window.addEventListener("load", function () {
+      setTimeout(() => {
+        // Hide loader and show main content
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+  
+        // Scroll to top
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: "instant" });
+        });
+  
+        // Apply typing effect to all section h2s with class 'typewrite'
+        document.querySelectorAll("section h2.typewrite").forEach((el, i) => {
+          setTimeout(() => typeText(el), i * 300); // staggered animation per section
+        });
+  
+      }, 1000); // Loader delay
+    });
+  </script>
+
+</body>
+</html>
