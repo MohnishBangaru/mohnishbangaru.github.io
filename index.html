@@ -3,8 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mohnish Bangaru</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>Mohnish Bangaru - Data Scientist & ML Engineer | NYU Graduate Student</title>
+  <meta name="description" content="Mohnish Bangaru is a Data Scientist and ML Engineer at NYU Tandon, specializing in AI, computer vision, and efficient deep learning. View portfolio, projects, and experience." />
+  <meta name="keywords" content="Mohnish Bangaru, Data Scientist, ML Engineer, NYU, Computer Vision, AI, Deep Learning, Machine Learning, Portfolio" />
+  <meta name="author" content="Mohnish Bangaru" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Mohnish Bangaru - Data Scientist & ML Engineer" />
+  <meta property="og:description" content="Graduate student at NYU Tandon specializing in AI, computer vision, and efficient deep learning. View my portfolio and projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mohnishbangaru.github.io" />
+  <meta property="og:image" content="https://mohnishbangaru.github.io/assets/profile.jpg" />
+  <meta property="og:site_name" content="Mohnish Bangaru Portfolio" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mohnish Bangaru - Data Scientist & ML Engineer" />
+  <meta name="twitter:description" content="Graduate student at NYU Tandon specializing in AI, computer vision, and efficient deep learning." />
+  <meta name="twitter:image" content="https://mohnishbangaru.github.io/assets/profile.jpg" />
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="7 days" />
+  <meta name="distribution" content="global" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/profile.jpg" />
+  <link rel="apple-touch-icon" href="assets/profile.jpg" />
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="style.css" as="style" />
+  <link rel="preload" href="assets/profile.jpg" as="image" />
+  <link rel="preload" href="assets/gradient-bg.png" as="image" />
+  
   <link rel="stylesheet" href="style.css" />
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohnish Bangaru",
+    "jobTitle": "Data Scientist & ML Engineer",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "New York University, Tandon School of Engineering"
+    },
+    "url": "https://mohnishbangaru.github.io",
+    "sameAs": [
+      "https://linkedin.com/in/mohnishbangaru",
+      "https://github.com/mohnishbangaru"
+    ],
+    "email": "mohnishbangaru@nyu.edu",
+    "description": "Graduate student at NYU Tandon specializing in AI, computer vision, and efficient deep learning",
+    "knowsAbout": [
+      "Machine Learning",
+      "Deep Learning", 
+      "Computer Vision",
+      "Data Science",
+      "AI",
+      "Python",
+      "TensorFlow",
+      "OpenCV"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "New York University"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -19,6 +89,14 @@
 
     <header>
       <h1>Mohnish Bangaru</h1>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+          <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"/>
+        </svg>
+      </button>
     </header>
 
     <nav>
@@ -45,7 +123,7 @@
         </div>
     
         <div class="about-image">
-          <img src="assets/profile.jpg" alt="Mohnish Bangaru" />
+          <img src="assets/profile.jpg" alt="Mohnish Bangaru - Data Scientist and ML Engineer" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
@@ -86,6 +164,12 @@
         <div class="project-grid">
       
           <!-- Recent & Graduate-Level Projects -->
+          <div class="project-card">
+            <h3>AA_VA: Autonomous Android App Testing Solution</h3>
+            <p>Developed a universal Android app testing solution using GPT-4 reasoning and computer vision integration. Implemented OCR-based UI element detection with OpenCV and Tesseract, enabling autonomous decision-making for clicks, scrolls, and text input across any APK without code modifications.</p>
+            <p><strong>Skills:</strong> Android Development, Computer Vision, OCR, GPT-4 Integration, OpenCV, Tesseract, ReportLab</p>
+          </div>
+
           <div class="project-card">
             <h3>Integrating Quantization with Residual Connections (Ongoing)</h3>
             <p>Currently exploring the synergy between quantization-aware training and residual connection design in deep neural networks. The goal is to maintain representational capacity while drastically improving hardware efficiency - ideal for edge deployment.</p>
@@ -178,6 +262,48 @@
 
   <!-- Script to handle loader and scroll-to-top -->
   <script>
+    // Theme management
+    function initTheme() {
+      const theme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const sunIcon = document.querySelector('.sun-icon');
+      const moonIcon = document.querySelector('.moon-icon');
+      
+      if (theme === 'dark') {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      } else {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      }
+    }
+
+    // Register Service Worker for caching
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+
     // Typing animation for section headers
     function typeText(el, speed = 50) {
       const text = el.textContent;
@@ -192,6 +318,12 @@
     }
   
     window.addEventListener("load", function () {
+      // Initialize theme
+      initTheme();
+      
+      // Add theme toggle event listener
+      document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+      
       setTimeout(() => {
         // Hide loader and show main content
         document.getElementById("loader").style.display = "none";
@@ -205,6 +337,11 @@
         // Apply typing effect to all section h2s with class 'typewrite'
         document.querySelectorAll("section h2.typewrite").forEach((el, i) => {
           setTimeout(() => typeText(el), i * 300); // staggered animation per section
+        });
+
+        // Set staggered animation delays for project cards
+        document.querySelectorAll(".project-card").forEach((card, index) => {
+          card.style.setProperty('--card-index', index);
         });
   
       }, 1000); // Loader delay
