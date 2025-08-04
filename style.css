@@ -96,6 +96,7 @@ header p {
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 12px var(--shadow-color);
+  animation: pulse 2s ease-in-out infinite;
 }
 
 .theme-toggle:hover {
@@ -322,10 +323,6 @@ header h1 {
 }
 
 /* Pulse animation for theme toggle */
-.theme-toggle {
-  animation: pulse 2s ease-in-out infinite;
-}
-
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);

@@ -265,6 +265,7 @@
     // Theme management
     function initTheme() {
       const theme = localStorage.getItem('theme') || 'light';
+      console.log('Initializing theme:', theme);
       document.documentElement.setAttribute('data-theme', theme);
       updateThemeIcon(theme);
     }
@@ -273,6 +274,7 @@
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
       
+      console.log('Toggling theme from', currentTheme, 'to', newTheme);
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
       updateThemeIcon(newTheme);
@@ -281,6 +283,10 @@
     function updateThemeIcon(theme) {
       const sunIcon = document.querySelector('.sun-icon');
       const moonIcon = document.querySelector('.moon-icon');
+      
+      console.log('Updating theme icon for:', theme);
+      console.log('Sun icon found:', !!sunIcon);
+      console.log('Moon icon found:', !!moonIcon);
       
       if (theme === 'dark') {
         sunIcon.style.display = 'none';
@@ -322,7 +328,15 @@
       initTheme();
       
       // Add theme toggle event listener
-      document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+      const themeToggle = document.getElementById('theme-toggle');
+      console.log('Theme toggle button found:', !!themeToggle);
+      
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+        console.log('Theme toggle event listener added');
+      } else {
+        console.error('Theme toggle button not found!');
+      }
       
       setTimeout(() => {
         // Hide loader and show main content
