@@ -340,6 +340,8 @@ header h1 {
   color: inherit;
   display: block;
   transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .project-card-link:hover {
@@ -347,7 +349,7 @@ header h1 {
 }
 
 .project-card-link:hover .project-card {
-  transform: translateY(-6px) scale(1.02);
+  transform: scale(1.02);
   box-shadow: 0 12px 32px var(--shadow-color);
 }
 
