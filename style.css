@@ -339,17 +339,11 @@ header h1 {
   text-decoration: none;
   color: inherit;
   display: block;
-  transition: transform 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.project-card-link:hover {
-  transform: translateY(-4px);
+  transition: all 0.3s ease;
 }
 
 .project-card-link:hover .project-card {
-  transform: scale(1.02);
+  transform: translateY(-8px);
   box-shadow: 0 12px 32px var(--shadow-color);
 }
 
@@ -366,7 +360,6 @@ header h1 {
   border: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
   position: relative;
-  overflow: hidden;
 }
 
 .project-card::before {
