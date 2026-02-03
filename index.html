@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <!-- SEO Meta Tags -->
   <title>Mohnish Bangaru - Data Scientist & ML Engineer | NYU Graduate</title>
-  <meta name="description" content="Mohnish Bangaru is a recent graduate from NYU Tandon with expertise in AI, computer vision, and efficient deep learning. View portfolio, projects, and experience." />
-  <meta name="keywords" content="Mohnish Bangaru, Data Scientist, ML Engineer, NYU, Computer Vision, AI, Deep Learning, Machine Learning, Portfolio" />
+  <meta name="description"
+    content="Mohnish Bangaru is a recent graduate from NYU Tandon with expertise in AI, computer vision, and efficient deep learning. View portfolio, projects, and experience." />
+  <meta name="keywords"
+    content="Mohnish Bangaru, Data Scientist, ML Engineer, NYU, Computer Vision, AI, Deep Learning, Machine Learning, Portfolio" />
   <meta name="author" content="Mohnish Bangaru" />
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Mohnish Bangaru - Data Scientist & ML Engineer" />
-  <meta property="og:description" content="Recent graduate from NYU Tandon specializing in AI, computer vision, and efficient deep learning. View my portfolio and projects." />
+  <meta property="og:description"
+    content="Recent graduate from NYU Tandon specializing in AI, computer vision, and efficient deep learning. View my portfolio and projects." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mohnishbangaru.github.io" />
   <meta property="og:image" content="https://mohnishbangaru.github.io/assets/profile.jpg" />
   <meta property="og:site_name" content="Mohnish Bangaru Portfolio" />
-  
+
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mohnish Bangaru - Data Scientist & ML Engineer" />
-  <meta name="twitter:description" content="Recent graduate from NYU Tandon specializing in AI, computer vision, and efficient deep learning." />
+  <meta name="twitter:description"
+    content="Recent graduate from NYU Tandon specializing in AI, computer vision, and efficient deep learning." />
   <meta name="twitter:image" content="https://mohnishbangaru.github.io/assets/profile.jpg" />
-  
+
   <!-- Additional SEO Meta Tags -->
   <meta name="robots" content="index, follow" />
   <meta name="language" content="English" />
   <meta name="revisit-after" content="7 days" />
   <meta name="distribution" content="global" />
-  
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/profile.jpg" />
   <link rel="apple-touch-icon" href="assets/profile.jpg" />
-  
+
   <!-- Preload critical resources -->
   <link rel="preload" href="style.css" as="style" />
   <link rel="preload" href="assets/profile.jpg" as="image" />
   <link rel="preload" href="assets/gradient-bg.png" as="image" />
-  
+
   <link rel="stylesheet" href="style.css" />
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
@@ -76,20 +82,68 @@
   }
   </script>
 </head>
+
 <body>
+  <button id="theme-toggle" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
 
   <!-- Loading Screen -->
   <div id="loader">
-    <div class="spinner"></div>
-    <p>mohnishbangaru.github.io</p>
+    <div class="logo-container">
+      <div class="logo-ring"></div>
+      <span class="logo-text">MB</span>
+    </div>
   </div>
 
   <!-- Main Content -->
   <div id="main-content" style="display: none;">
 
-    <header>
-      <h1>Mohnish Bangaru</h1>
-    </header>
+    <!-- Hero Section -->
+    <section id="about" class="hero-section fade-in">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="badge-container">
+            <span class="ai-badge"><i class="fas fa-robot"></i> AI Engineer</span>
+            <span class="ai-badge"><i class="fas fa-brain"></i> Data Scientist</span>
+          </div>
+          <h1 class="gradient-text">Mohnish Bangaru</h1>
+          <p class="hero-subtitle typewrite">Building intelligent systems that scale.</p>
+
+          <p class="hero-description">
+            I work at the intersection of <strong>Computer Vision</strong>, <strong>Efficient Deep Learning</strong>,
+            and <strong>Real-world Impact</strong>.
+            Currently optimizing ML pipelines and building autonomous agents.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="button check-work-btn">View My Work</a>
+            <div class="social-links">
+              <a href="https://github.com/mohnishbangaru" target="_blank" aria-label="GitHub"><i
+                  class="fab fa-github"></i></a>
+              <a href="https://linkedin.com/in/mohnishbangaru" target="_blank" aria-label="LinkedIn"><i
+                  class="fab fa-linkedin"></i></a>
+              <a href="mailto:mohnishbangaru@nyu.edu" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-container">
+          <div class="image-wrapper">
+            <img src="assets/profile.jpg" alt="Mohnish Bangaru" class="profile-img" />
+            <div class="tech-orbit">
+              <div class="tech-icon" style="--i:0"><i class="fab fa-python"></i></div>
+              <div class="tech-icon" style="--i:1"><i class="fab fa-docker"></i></div>
+              <div class="tech-icon" style="--i:2"><i class="fas fa-database"></i></div>
+              <div class="tech-icon" style="--i:3" title="PyTorch"><i class="fas fa-fire" style="color: #EE4C2C;"></i>
+              </div> <!-- PyTorch -->
+              <div class="tech-icon" style="--i:4" title="LangChain"><i class="fas fa-link" style="color: #333;"></i>
+              </div> <!-- LangChain -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <nav>
       <a href="#about">Hello!</a>
@@ -99,233 +153,295 @@
       <a href="#contact">Get in touch!</a>
     </nav>
 
-    <!-- About: Scrolls freely -->
-    <section id="about" class="fade-in slide-up about-section">
-      <div class="about-content">
-        <div class="about-text">
-          <h2 class="typewrite">Hi, I'm Mohnish</h2>
-    
-          <p>A curious learner, creative thinker, and someone who genuinely enjoys building things that make life better. Whether it’s writing code, picking up a paintbrush, or diving into a new dataset, I’m always chasing the challenge that teaches me something new.</p>
-    
-          <p>I recently graduated from NYU Tandon with a Master’s in Computer Engineering, where I worked at the intersection of technology and impact. I’ve spent time exploring how we can make AI not just smarter, but more efficient and accessible – and I'm especially drawn to projects that blend creativity with problem solving.</p>
-    
-          <p>Outside of work, you’ll find me with a guitar in hand, a camera over my shoulder, or out on the basketball court. I’ve always believed that balance fuels better thinking - and that being a thoughtful engineer means being a thoughtful human first.</p>
-    
-          <p>If you're someone who cares about building meaningful things - in tech or beyond - I’d love to connect.</p>
-        </div>
-    
-        <div class="about-image">
-          <img src="assets/profile.jpg" alt="Mohnish Bangaru - Data Scientist and ML Engineer" loading="lazy" decoding="async" />
-        </div>
-      </div>
-    </section>
-
     <!-- Snap Scroll Container -->
     <div id="snap-scroll">
 
       <section id="experience" class="fade-in slide-up">
         <h2 class="typewrite">Experience</h2>
-        <ul>
-          <li>
-            <strong>Graduate Student Data Analyst – New York University</strong><br>
-            <em>Sep 2023 – May 2025</em><br>
-            • Built ETL pipelines for 30,000+ survey strengths, cutting processing time by 50%.<br>
-            • Applied NLP to improve student feedback quality by 25%.<br>
-            • Deployed ML models with Docker/Kubernetes, reducing A/B test time by 60%.<br>
-            • Led onboarding for new hires in ML best practices.
-          </li>
-          <li>
-            <strong>Data Scientist – KPMG</strong><br>
-            <em>Apr 2022 – May 2023</em><br>
-            • Automated Python/ML reporting workflows, saving 264+ hours yearly.<br>
-            • Led team to enhance anomaly detection in trading systems, reducing false positives by 40%.
-          </li>
-          <li>
-            <strong>Analyst – KPMG</strong><br>
-            <em>Jan 2021 – Apr 2022</em><br>
-            • Revamped SQL for real-time data, improving execution speed by 30%.<br>
-            • Built REST APIs for auto-deployment, increasing deployment frequency by 15%.
-          </li>
-          <a class="button" href="assets/resume.pdf" download>Download Resume</a>
-        </ul>
+        <div class="timeline">
+
+          <!-- Job 1: Drizz -->
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <img src="assets/logos/Drizz.png" alt="Drizz Logo">
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Aug 2025 – Present</span>
+              <h3 class="timeline-title">AI Engineer</h3>
+              <p class="timeline-company">Drizz (New York, NY)</p>
+              <ul class="timeline-description">
+                <li>Built a Mobile Application Testing Agent enabling natural language testing, engineering a context
+                  caching protocol that reduced costs by 75%.</li>
+                <li>Designed a library of 14 tools leveraging VLM capabilities for precise environment interaction.</li>
+                <li>Crafted custom Agent Evaluation Frameworks using Action Alignment Score and Step Efficiency,
+                  improving testing accuracy by 90%.</li>
+                <li>Developed a test authoring module using agent-generated metadata, reducing test creation time by
+                  60%.</li>
+              </ul>
+              <div class="skills-container" style="margin-top: 1rem;">
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">Vision-Language Models</span>
+                <span class="skill-tag">LangChain</span>
+                <span class="skill-tag">Python</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 2: NYU -->
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <img src="assets/logos/NYU.png" alt="NYU Logo">
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Sep 2023 – May 2025</span>
+              <h3 class="timeline-title">Graduate Student Analyst</h3>
+              <p class="timeline-company">New York University (New York, NY)</p>
+              <ul class="timeline-description">
+                <li>Enhanced data searchability using RoBERTa, improving user problem identification accuracy by 80%.
+                </li>
+                <li>Created and maintained ETL pipelines for University Data Warehouse (5M+ rows), adhering to strict
+                  governance.</li>
+                <li>Introduced 15+ Tableau dashboards to support data-driven decision-making across departments.</li>
+              </ul>
+              <div class="skills-container" style="margin-top: 1rem;">
+                <span class="skill-tag">Microsoft Excel</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Qualtrics</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Oracle DB</span>
+                <span class="skill-tag">sci-kit learn</span>
+                <span class="skill-tag">Python</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 3: KPMG -->
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <img src="assets/logos/KPMG.png" alt="KPMG Logo">
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Apr 2022 – May 2023</span>
+              <h3 class="timeline-title">Data Scientist</h3>
+              <p class="timeline-company">KPMG (Bangalore, IN)</p>
+              <ul class="timeline-description">
+                <li>Automated reporting workflows using Python scripts and deep learning, saving 264+ hours annually.
+                </li>
+                <li>Achieved 99% data extraction accuracy using BERT-based models for NER on financial documents.</li>
+              </ul>
+              <!-- Nested Analyst Role -->
+              <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                <span class="timeline-date">Jan 2021 – Mar 2022</span>
+                <h3 class="timeline-title" style="font-size: 1.1rem;">Analyst</h3>
+                <ul class="timeline-description">
+                  <li>Revamped SQL queries for real-time data access, cutting execution time by 30%.</li>
+                  <li>Maintained documentation and scripted REST APIs for AWS-deployed forecasting models.</li>
+                </ul>
+              </div>
+              <div class="skills-container" style="margin-top: 1rem;">
+                <span class="skill-tag">Alteryx</span>
+                <span class="skill-tag">API Development</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Python</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <section id="projects" class="fade-in slide-up">
         <h2 class="typewrite">Projects</h2>
-      
-        <div class="project-grid">
-      
-          <!-- Recent & Graduate-Level Projects -->
-          <a href="https://github.com/mohnishbangaru/AA_VA" target="_blank" class="project-card-link">
-            <div class="project-card">
-              <h3>AA_VA: Autonomous Android App Testing Solution</h3>
-              <p>Developed a universal Android app testing solution using GPT-4 reasoning and computer vision integration. Implemented OCR-based UI element detection with OpenCV and Tesseract, enabling autonomous decision-making for clicks, scrolls, and text input across any APK without code modifications.</p>
-              <p><strong>Skills:</strong> Android Development, Computer Vision, OCR, GPT-4 Integration, OpenCV, Tesseract, ReportLab</p>
-            </div>
-          </a>
 
-          <a href="https://github.com/mohnishbangaru/quantization-residual-connections" target="_blank" class="project-card-link">
+        <!-- Filter Buttons -->
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ml">AI & ML</button>
+          <button class="filter-btn" data-filter="data">Data Science</button>
+          <button class="filter-btn" data-filter="dev">Engineering</button>
+        </div>
+
+        <div class="project-grid">
+
+          <!-- Recent & Graduate-Level Projects -->
+
+          <a href="https://github.com/mohnishbangaru/quantization-residual-connections" target="_blank"
+            class="project-card-link" data-category="ml">
             <div class="project-card">
               <h3>Integrating Quantization with Residual Connections (Ongoing)</h3>
-              <p>Currently exploring the synergy between quantization-aware training and residual connection design in deep neural networks. The goal is to maintain representational capacity while drastically improving hardware efficiency - ideal for edge deployment.</p>
-              <p><strong>Focus:</strong> Accuracy Retention · Efficient Inference · Low-Resource DNNs</p>
+              <p>Currently exploring the synergy between quantization-aware training and residual connection design in
+                deep neural networks. The goal is to maintain representational capacity while drastically improving
+                hardware efficiency - ideal for edge deployment.</p>
+              <div class="skills-container">
+                <span class="skill-tag">Accuracy Retention</span>
+                <span class="skill-tag">Efficient Inference</span>
+                <span class="skill-tag">Low-Resource DNNs</span>
+              </div>
             </div>
           </a>
 
-          <a href="https://github.com/mohnishbangaru/efficient-deep-learning-edge" target="_blank" class="project-card-link">
+          <a href="https://github.com/mohnishbangaru/efficient-deep-learning-edge" target="_blank"
+            class="project-card-link" data-category="ml">
             <div class="project-card">
               <h3>Efficient Deep Learning for Edge Deployment</h3>
-              <p>Trimmed ResNet-50 using quantization-aware training and residual connections, reducing model size by 50% and memory by 65%, achieving 10x faster on-device inference.</p>
-              <p><strong>Skills:</strong> Parameter Reduction, Quantization, Efficient DNN Training</p>
+              <p>Trimmed ResNet-50 using quantization-aware training and residual connections, reducing model size by
+                50% and memory by 65%, achieving 10x faster on-device inference.</p>
+              <div class="skills-container">
+                <span class="skill-tag">Parameter Reduction</span>
+                <span class="skill-tag">Quantization</span>
+                <span class="skill-tag">Efficient DNN Training</span>
+              </div>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/medical-expert-qa" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/medical-expert-qa" target="_blank" class="project-card-link"
+            data-category="ml">
             <div class="project-card">
               <h3>Medical Expert Question-Answering Model</h3>
-              <p>Fine-tuned a Vision-Language Transformer on 5,000 MIMIC-CXR scans + reports, achieving 96% accuracy in condition identification and expert text generation.</p>
-              <p><strong>Skills:</strong> Multimodal Fine-Tuning, LLMOps, Vision-Language Models</p>
+              <p>Fine-tuned a Vision-Language Transformer on 5,000 MIMIC-CXR scans + reports, achieving 96% accuracy in
+                condition identification and expert text generation.</p>
+              <div class="skills-container">
+                <span class="skill-tag">Multimodal Fine-Tuning</span>
+                <span class="skill-tag">LLMOps</span>
+                <span class="skill-tag">Vision-Language Models</span>
+              </div>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/qlora-finetuning" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/qlora-finetuning" target="_blank" class="project-card-link"
+            data-category="ml">
             <div class="project-card">
               <h3>Fine-Tuning LLMs using QLoRA</h3>
-              <p>Fine-tuned Pythia 6.9B/12B with Alpaca dataset using QLoRA and tested LoRA ranks (1–16). Achieved optimal loss at rank 8 without major qualitative differences across ranks.</p>
-              <p><strong>Skills:</strong> Fine-Tuning, LLMs, Experimentation, Deep Learning</p>
+              <p>Fine-tuned Pythia 6.9B/12B with Alpaca dataset using QLoRA and tested LoRA ranks (1–16). Achieved
+                optimal loss at rank 8 without major qualitative differences across ranks.</p>
+              <div class="skills-container">
+                <span class="skill-tag">Fine-Tuning</span>
+                <span class="skill-tag">LLMs</span>
+                <span class="skill-tag">Experimentation</span>
+                <span class="skill-tag">Deep Learning</span>
+              </div>
             </div>
           </a>
-      
+
           <!-- Undergraduate & Exploratory Projects -->
-          <a href="https://github.com/mohnishbangaru/impala-chatbot" target="_blank" class="project-card-link">
+          <a href="https://github.com/mohnishbangaru/impala-chatbot" target="_blank" class="project-card-link"
+            data-category="dev">
             <div class="project-card">
               <h3>Impala Chatbot</h3>
-              <p>Built a customizable chatbot platform that allows consumers to define response logic for different domains or industries.</p>
+              <p>Built a customizable chatbot platform that allows consumers to define response logic for different
+                domains or industries.</p>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/youtube-voice-automation" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/youtube-voice-automation" target="_blank" class="project-card-link"
+            data-category="dev">
             <div class="project-card">
               <h3>Voice Automation for YouTube</h3>
               <p>Developed a Python-based automation tool to control YouTube via voice commands.</p>
-              <p><strong>Skills:</strong> Python, Voice Commands</p>
+              <div class="skills-container">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Voice Commands</span>
+              </div>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/covid-dashboard" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/covid-dashboard" target="_blank" class="project-card-link"
+            data-category="data">
             <div class="project-card">
               <h3>Visual COVID Dashboard</h3>
               <p>Created an interactive dashboard to visualize COVID-19 data trends using R.</p>
-              <p><strong>Skills:</strong> R Programming, Data Visualization</p>
+              <div class="skills-container">
+                <span class="skill-tag">R Programming</span>
+                <span class="skill-tag">Data Visualization</span>
+              </div>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/stock-prediction" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/stock-prediction" target="_blank" class="project-card-link"
+            data-category="data">
             <div class="project-card">
               <h3>Stock Market Prediction</h3>
               <p>Built a predictive model using S&P 500 market data and time series analysis techniques.</p>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/exoplanet-hunting" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/exoplanet-hunting" target="_blank" class="project-card-link"
+            data-category="data">
             <div class="project-card">
               <h3>Exoplanet Hunting</h3>
-              <p>Analyzed NASA Kepler telescope time series data to identify exoplanet candidates using signal detection algorithms.</p>
+              <p>Analyzed NASA Kepler telescope time series data to identify exoplanet candidates using signal detection
+                algorithms.</p>
             </div>
           </a>
-      
-          <a href="https://github.com/mohnishbangaru/pothole-detection" target="_blank" class="project-card-link">
+
+          <a href="https://github.com/mohnishbangaru/pothole-detection" target="_blank" class="project-card-link"
+            data-category="ml">
             <div class="project-card">
               <h3>Automated Pothole Detection</h3>
-              <p>Developed a computer vision model to detect potholes from road images, contributing to smart city infrastructure solutions.</p>
+              <p>Developed a computer vision model to detect potholes from road images, contributing to smart city
+                infrastructure solutions.</p>
             </div>
           </a>
-      
+
       </section>
-      
+
 
       <section id="education" class="fade-in slide-up">
         <h2 class="typewrite">Education</h2>
-        <ul>
-          <li>
-            <strong>New York University, Tandon School of Engineering</strong><br>
-            Master of Science in Computer Engineering – GPA: 3.8/4.0<br>
-            <em>Sep 2023 – May 2025</em>
-          </li>
-          <li>
-            <strong>SRM Institute of Science and Technology</strong><br>
-            B.Tech in Computer Science and Engineering – GPA: 3.8/4.0<br>
-            <em>Jul 2017 – May 2021</em>
-          </li>
-        </ul>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <img src="assets/logos/NYU.png" alt="NYU Logo">
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Sep 2023 – May 2025</span>
+              <h3 class="timeline-title">Master of Science in Computer Engineering</h3>
+              <p class="timeline-company">New York University</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-icon">
+              <img src="assets/logos/SRM.png" alt="SRM Logo">
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">Jul 2017 – May 2021</span>
+              <h3 class="timeline-title">B.Tech in Computer Science and Engineering</h3>
+              <p class="timeline-company">SRM Institute of Science and Technology</p>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <section id="contact" class="fade-in slide-up">
-        <h2 class="typewrite">Get in touch!</h2>
-        <p>Email: <a href="mailto:mohnishbangaru@nyu.edu">mohnishbangaru@nyu.edu</a></p>
-        <p>🔗 <a href="https://linkedin.com/in/mohnishbangaru" target="_blank">LinkedIn</a> | <a href="https://github.com/mohnishbangaru" target="_blank">GitHub</a></p>
+        <div class="contact-card glass-card">
+          <h2 class="typewrite">Get in touch!</h2>
+          <p>Got a wild idea? 💡 Want to build the future? 🚀 Or just want to say hi? I’m all ears! Let's make something
+            awesome together.</p>
+          <a href="mailto:mohnishbangaru@nyu.edu" class="contact-email">mohnishbangaru@nyu.edu</a>
+          <div class="social-links" style="justify-content: center;">
+            <a href="https://linkedin.com/in/mohnishbangaru" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/mohnishbangaru" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="assets/mohnish_bangaru_ai_engineer_resume.pdf" download title="Download Resume"><i
+                class="fas fa-file-alt"></i></a>
+          </div>
+        </div>
       </section>
 
     </div>
 
     <footer>
-      <p>&copy; 2025 Mohnish Bangaru. All rights reserved.</p>
+      <p>&copy; 2026 Mohnish Bangaru. All rights reserved.</p>
     </footer>
 
   </div>
 
   <!-- Script to handle loader and scroll-to-top -->
-  <script>
-    // Register Service Worker for caching
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-
-    // Typing animation for section headers
-    function typeText(el, speed = 50) {
-      const text = el.textContent;
-      el.textContent = "";
-      let i = 0;
-  
-      const interval = setInterval(() => {
-        el.textContent += text.charAt(i);
-        i++;
-        if (i >= text.length) clearInterval(interval);
-      }, speed);
-    }
-  
-    window.addEventListener("load", function () {
-      setTimeout(() => {
-        // Hide loader and show main content
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-  
-        // Scroll to top
-        requestAnimationFrame(() => {
-          window.scrollTo({ top: 0, behavior: "instant" });
-        });
-  
-        // Apply typing effect to all section h2s with class 'typewrite'
-        document.querySelectorAll("section h2.typewrite").forEach((el, i) => {
-          setTimeout(() => typeText(el), i * 300); // staggered animation per section
-        });
-
-        // Set staggered animation delays for project cards
-        document.querySelectorAll(".project-card").forEach((card, index) => {
-          card.style.setProperty('--card-index', index);
-        });
-  
-      }, 1000); // Loader delay
-    });
-  </script>
+  <!-- Script to handle loader, scroll, and theme -->
+  <script src="script.js"></script>
 
 </body>
+
 </html>

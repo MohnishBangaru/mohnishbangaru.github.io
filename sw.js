@@ -1,11 +1,12 @@
-const CACHE_NAME = 'mohnish-portfolio-v1';
+const CACHE_NAME = 'mohnish-portfolio-v23';
 const urlsToCache = [
   '/',
   '/index.html',
   '/style.css',
+  '/script.js',
   '/assets/profile.jpg',
   '/assets/gradient-bg.png',
-  '/assets/resume.pdf'
+  '/assets/mohnish_bangaru_ai_engineer_resume.pdf'
 ];
 
 // Install event - cache resources
