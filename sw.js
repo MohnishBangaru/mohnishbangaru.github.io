@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mohnish-portfolio-v23';
+const CACHE_NAME = 'mohnish-portfolio-v39';
 const urlsToCache = [
   '/',
   '/index.html',

@@ -8,6 +8,10 @@ const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     body.classList.add(savedTheme);
     updateIcon(savedTheme);
+} else {
+    // Default to dark mode
+    body.classList.add('dark-theme');
+    updateIcon('dark-theme');
 }
 
 if (themeToggle) {
@@ -91,6 +95,12 @@ window.addEventListener("load", function () {
         };
 
         const observer = new IntersectionObserver((entries) => {
+            // Priority Check: If we are at the bottom of the page, ignore intersection updates
+            // This prevents the observer from overriding the 'Contact' highlight set by the scroll listener
+            if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
+                return;
+            }
+
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.getAttribute("id");
@@ -107,13 +117,19 @@ window.addEventListener("load", function () {
         sections.forEach(section => observer.observe(section));
 
         // Handle bottom of page case for Contact section
-        window.addEventListener('scroll', () => {
+        // Handle bottom of page case for Contact section
+        function updateActiveLink() {
+            // Check if we are at the very bottom of the page
             if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
+                // Force Contact Active
                 navLinks.forEach(link => link.classList.remove('active'));
                 const contactLink = document.querySelector('nav a[href="#contact"]');
                 if (contactLink) contactLink.classList.add('active');
             }
-        });
+        }
+
+        window.addEventListener('scroll', updateActiveLink);
+        window.addEventListener('resize', updateActiveLink);
 
         // PROJECT FILTERING
         const filterBtns = document.querySelectorAll('.filter-btn');
