@@ -14,8 +14,7 @@
   --toggle-bg: #f5f5f7;
 }
 
-/* Dark theme colors */
-/* Dark theme colors - High Contrast */
+/* Dark theme colors - high contrast */
 body.dark-theme {
   --bg-primary: #050505;
   /* Deep, true black for OLED pop */
@@ -76,18 +75,50 @@ body {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background:
-    linear-gradient(var(--gradient-overlay), var(--gradient-overlay)),
-    url("assets/gradient-bg.png") center/cover no-repeat fixed;
-  background-blend-mode: overlay;
   color: var(--text-primary);
   font-size: 18px;
   line-height: 1.6;
-  /* Performance optimizations */
-  will-change: scroll-position;
-  contain: layout style paint;
+  /* Fallback behind the backdrop, in case the image fails to load. It lives
+     here rather than on ::before because an opaque colour underneath the
+     blended layers would turn the whole `overlay` blend flat. */
+  background-color: var(--bg-primary);
   /* Smooth theme transitions */
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*
+ * Backdrop as a fixed pseudo-element rather than `background-attachment: fixed`
+ * on the body. The latter forces a full-viewport repaint on every scroll frame
+ * and is the main source of scroll stutter on mobile.
+ *
+ * The duplicated background-image declaration is a cascade fallback: browsers
+ * without WebP support keep the PNG, newer ones override it. Only the winning
+ * declaration is ever fetched.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--gradient-overlay), var(--gradient-overlay)),
+    url("assets/gradient-bg.png");
+  background-image:
+    linear-gradient(var(--gradient-overlay), var(--gradient-overlay)),
+    url("assets/gradient-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+}
+
+/* Inline SVG icons, sized from the parent's font-size like the old webfont. */
+.icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+  flex: none;
 }
 
 /* Layout */
@@ -387,6 +418,14 @@ footer {
 }
 
 .tech-icon {
+  /*
+   * Orbit radius as a custom property. The per-icon rules below are
+   * `.tech-icon:nth-child(n)`, which outranks a plain `.tech-icon` override in
+   * a media query — so a hard-coded radius there is silently ignored. Custom
+   * properties inherit by cascade order instead, letting the mobile block
+   * below actually change the radius.
+   */
+  --orbit-r: 160px;
   position: absolute;
   width: 50px;
   height: 50px;
@@ -409,31 +448,31 @@ footer {
 /* Python */
 .tech-icon:nth-child(1) {
   animation-duration: 8s;
-  transform: rotate(0deg) translateX(160px) rotate(0deg);
+  transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg);
 }
 
 /* Docker */
 .tech-icon:nth-child(2) {
   animation-duration: 12s;
-  transform: rotate(72deg) translateX(160px) rotate(-72deg);
+  transform: rotate(72deg) translateX(var(--orbit-r)) rotate(-72deg);
 }
 
 /* DB */
 .tech-icon:nth-child(3) {
   animation-duration: 10s;
-  transform: rotate(144deg) translateX(160px) rotate(-144deg);
+  transform: rotate(144deg) translateX(var(--orbit-r)) rotate(-144deg);
 }
 
 /* PyTorch */
 .tech-icon:nth-child(4) {
   animation-duration: 15s;
-  transform: rotate(216deg) translateX(160px) rotate(-216deg);
+  transform: rotate(216deg) translateX(var(--orbit-r)) rotate(-216deg);
 }
 
 /* LangChain */
 .tech-icon:nth-child(5) {
   animation-duration: 9s;
-  transform: rotate(288deg) translateX(160px) rotate(-288deg);
+  transform: rotate(288deg) translateX(var(--orbit-r)) rotate(-288deg);
 }
 
 
@@ -533,9 +572,28 @@ footer {
 
 .project-card {
   animation: cardAppear 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: calc(var(--card-index, 0) * 0.1s);
   opacity: 0;
   transform: translateY(30px);
+}
+
+/*
+ * Stagger is done here rather than by setting --card-index from JS, so the
+ * cards still appear correctly if the script never runs.
+ */
+.project-card-link:nth-child(1) .project-card { animation-delay: 0s; }
+.project-card-link:nth-child(2) .project-card { animation-delay: 0.1s; }
+.project-card-link:nth-child(3) .project-card { animation-delay: 0.2s; }
+.project-card-link:nth-child(4) .project-card { animation-delay: 0.3s; }
+.project-card-link:nth-child(5) .project-card { animation-delay: 0.4s; }
+.project-card-link:nth-child(6) .project-card { animation-delay: 0.5s; }
+.project-card-link:nth-child(7) .project-card { animation-delay: 0.6s; }
+.project-card-link:nth-child(8) .project-card { animation-delay: 0.7s; }
+.project-card-link:nth-child(9) .project-card { animation-delay: 0.8s; }
+.project-card-link:nth-child(n + 10) .project-card { animation-delay: 0.9s; }
+
+/* Set by the project filter buttons. */
+.project-card-link.is-hidden {
+  display: none;
 }
 
 @keyframes fadeIn {
@@ -593,6 +651,29 @@ header h1 {
   justify-content: center;
   z-index: 9999;
   transition: background-color 0.3s ease;
+  /*
+   * Failsafe. If script.js never runs (parse error, blocked request, old
+   * browser) this clears the overlay anyway, so a JS failure can never leave
+   * the visitor staring at a spinner over content that is already there.
+   */
+  animation: loaderFailsafe 0s linear 3s forwards;
+}
+
+/* The normal path: script.js reveals the page as soon as it is ready. */
+body.loaded #loader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  animation: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+@keyframes loaderFailsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 .logo-container {
@@ -895,7 +976,6 @@ header h1 {
 }
 
 /* Fix flicker: make link the hover target */
-/* Fix flicker: make link the hover target */
 .project-card-link {
   display: block;
   text-decoration: none;
@@ -982,7 +1062,6 @@ header h1 {
   max-width: 900px;
 }
 
-/* Disable hover effect for contact section */
 /* Disable hover effect for contact section and inner card */
 #contact:hover,
 #contact .contact-card:hover {
@@ -1136,6 +1215,17 @@ header h1 {
     order: 1;
   }
 
+  /*
+   * Shrink the portrait so the photo plus the full orbit ring fits inside the
+   * section's content box on a phone. At 390px the content box is ~322px, and
+   * the desktop sizing (320px photo + 160px orbit radius) put the outermost
+   * icons ~15px past the screen edge, where they were clipped.
+   */
+  .image-wrapper {
+    width: 240px;
+    height: 240px;
+  }
+
   .tech-orbit {
     width: 100%;
     height: 100%;
@@ -1150,13 +1240,39 @@ header h1 {
   }
 
   .tech-icon {
-    /* Static arrangement for mobile */
-    transform: rotate(calc(var(--i) * 72deg)) translate(130px) rotate(calc(var(--i) * -72deg));
+    /* 2 x (125 + 22) = 294px total, comfortably inside the content box. */
+    --orbit-r: 125px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
     animation: none;
   }
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/*
+ * Narrow phones (iPhone SE and similar, 320px). The content box is only ~256px
+ * wide here, so the portrait and its orbit need another step down.
+ */
+@media (max-width: 380px) {
+  .image-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  .tech-icon {
+    /* 2 x (100 + 20) = 240px, inside the ~256px content box. */
+    --orbit-r: 100px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .gradient-text {
+    font-size: 2.1rem;
   }
 }
 
@@ -1191,9 +1307,57 @@ header h1 {
   transition: left 0.5s ease;
 }
 
-/* Removed conflicting hover rule - now handled by parent link */
+/* Project card hover effects are handled by the parent link. */
 
-/* Project card hover effects are now handled by the parent link */
+/*
+ * Reduced motion.
+ *
+ * The nine looping animations on this page (orbiting icons, morphing photo,
+ * spinning rings) are decorative and are stopped entirely here. The entrance
+ * animations cannot simply be switched off, because their elements start at
+ * opacity 0 and only the animation brings them in — so each one is pinned to
+ * its final state instead.
+ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  /* Elements that are invisible until their entrance animation runs. */
+  .fade-in,
+  .slide-up,
+  .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Keep the failsafe working: clear the loader immediately instead of at 4s. */
+  #loader {
+    animation-delay: 0s !important;
+  }
+
+  /* Purely decorative motion — no final state to preserve. */
+  .tech-icon,
+  .profile-img,
+  .logo-ring,
+  .logo-ring::before,
+  .logo-text,
+  .scroll-indicator,
+  header h1 {
+    animation: none !important;
+  }
+}
 
 .project-card h3 {
   margin-bottom: 0.75rem;
