@@ -105,12 +105,22 @@ safely('nav highlighting', () => {
   const navLinks = document.querySelectorAll('nav a');
   if (!sections.length || !navLinks.length) return;
 
-  // The scrollY > 0 guard matters at load time: before layout settles,
-  // scrollHeight can equal innerHeight and every page looks "scrolled to the
-  // bottom", which would wrongly highlight Contact on arrival.
-  const atPageBottom = () =>
-    window.scrollY > 0 &&
-    window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+  // Read the position from whichever element actually scrolls. Assuming the
+  // window is the scroller is what silently broke this: a stray `overflow-y`
+  // on <body> made it a nested scroller and pinned window.scrollY to 0.
+  const scrollTop = () =>
+    window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+  const pageHeight = () =>
+    Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+
+  // The > 0 guard matters at load time: before layout settles, scrollHeight can
+  // equal innerHeight and every page looks "scrolled to the bottom", which
+  // would wrongly highlight Contact on arrival.
+  const atPageBottom = () => {
+    const top = scrollTop();
+    return top > 0 && window.innerHeight + top >= pageHeight() - 50;
+  };
 
   const setActive = (id) => {
     navLinks.forEach((link) => {
@@ -147,6 +157,9 @@ safely('nav highlighting', () => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
+  // Scroll events do not bubble, so a nested scroll container would never
+  // reach the window listener. Capture on the document catches those too.
+  document.addEventListener('scroll', onScroll, { passive: true, capture: true });
 });
 
 /* -------------------------------------------------------- Project filter -- */

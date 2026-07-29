@@ -66,14 +66,26 @@ body.dark-theme {
   box-sizing: border-box;
 }
 
-html,
-body {
+/*
+ * Only <html> may scroll.
+ *
+ * `height: 100%` + `overflow-y: scroll` used to be set on html AND body, which
+ * turned <body> into its own nested scroll container: html.scrollHeight stayed
+ * at the viewport height while body.scrollHeight grew to the full page. The
+ * page still scrolled, but window.scrollY was pinned at 0, so anything reading
+ * the window scroll position silently did nothing.
+ *
+ * overflow-y: scroll stays on html to keep the scrollbar gutter reserved and
+ * avoid a horizontal shift on short pages.
+ */
+html {
   height: 100%;
   scroll-behavior: smooth;
   overflow-y: scroll;
 }
 
 body {
+  min-height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-primary);
   font-size: 18px;
@@ -209,8 +221,8 @@ nav a.active::after {
 
 /* Section styling (scroll snap + content fit) */
 section {
-  scroll-snap-align: start;
-  scroll-margin-top: 3rem;
+  /* Clears the sticky nav, which now sits above the hero. */
+  scroll-margin-top: 7rem;
   margin: 3rem auto;
   padding: 3rem 2rem;
   width: 90%;
@@ -382,7 +394,7 @@ footer {
   transform: translateY(-3px);
 }
 
-/* Hero Image & Tech Orbit */
+/* Hero Image */
 .hero-image-container {
   display: flex;
   justify-content: center;
@@ -391,8 +403,9 @@ footer {
 
 .image-wrapper {
   position: relative;
-  width: 320px;
-  height: 320px;
+  /* Larger now that no orbit ring needs clearance around it. */
+  width: 360px;
+  height: 360px;
 }
 
 .profile-img {
@@ -404,144 +417,6 @@ footer {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   animation: morph 8s ease-in-out infinite;
   border: 4px solid var(--card-bg);
-}
-
-/* Atomic Gyroscope Animation */
-.tech-orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140%;
-  height: 140%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.tech-icon {
-  /*
-   * Orbit radius as a custom property. The per-icon rules below are
-   * `.tech-icon:nth-child(n)`, which outranks a plain `.tech-icon` override in
-   * a media query — so a hard-coded radius there is silently ignored. Custom
-   * properties inherit by cascade order instead, letting the mobile block
-   * below actually change the radius.
-   */
-  --orbit-r: 160px;
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: var(--card-bg);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: var(--accent-primary);
-  box-shadow: 0 4px 15px var(--shadow-color);
-  border: 1px solid var(--border-color);
-  /* Atomic Pulse Animation */
-  top: 50%;
-  left: 50%;
-  animation: orbitFloat 8s infinite linear;
-}
-
-/* Individual offsets for atomic look */
-/* Python */
-.tech-icon:nth-child(1) {
-  animation-duration: 8s;
-  transform: rotate(0deg) translateX(var(--orbit-r)) rotate(0deg);
-}
-
-/* Docker */
-.tech-icon:nth-child(2) {
-  animation-duration: 12s;
-  transform: rotate(72deg) translateX(var(--orbit-r)) rotate(-72deg);
-}
-
-/* DB */
-.tech-icon:nth-child(3) {
-  animation-duration: 10s;
-  transform: rotate(144deg) translateX(var(--orbit-r)) rotate(-144deg);
-}
-
-/* PyTorch */
-.tech-icon:nth-child(4) {
-  animation-duration: 15s;
-  transform: rotate(216deg) translateX(var(--orbit-r)) rotate(-216deg);
-}
-
-/* LangChain */
-.tech-icon:nth-child(5) {
-  animation-duration: 9s;
-  transform: rotate(288deg) translateX(var(--orbit-r)) rotate(-288deg);
-}
-
-
-/* Add swirling rings for "Atomic" feel */
-.tech-orbit::before,
-.tech-orbit::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border-radius: 50%;
-  border: 1px solid var(--accent-primary);
-  opacity: 0.2;
-  transform: translate(-50%, -50%);
-}
-
-.tech-orbit::before {
-  width: 100%;
-  height: 100%;
-  animation: spinRing3D 10s linear infinite;
-}
-
-.tech-orbit::after {
-  width: 80%;
-  height: 80%;
-  border-color: var(--accent-secondary);
-  animation: spinRing3DRev 15s linear infinite;
-}
-
-@keyframes spinRing3D {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) scaleY(0.5);
-  }
-
-  50% {
-    transform: translate(-50%, -50%) rotate(180deg) scaleY(1);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg) scaleY(0.5);
-  }
-}
-
-@keyframes spinRing3DRev {
-  0% {
-    transform: translate(-50%, -50%) rotate(360deg) scaleX(0.5);
-  }
-
-  50% {
-    transform: translate(-50%, -50%) rotate(180deg) scaleX(1);
-  }
-
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg) scaleX(0.5);
-  }
-}
-
-@keyframes orbitFloat {
-  0% {
-    margin-top: 0;
-  }
-
-  50% {
-    margin-top: -20px;
-  }
-
-  100% {
-    margin-top: 0;
-  }
 }
 
 @keyframes morph {
@@ -745,12 +620,17 @@ body.loaded #loader {
   }
 }
 
+/*
+ * Scroll snapping removed.
+ *
+ * `scroll-snap-type: y mandatory` forces the scroll position to a section
+ * start, but Experience (1650px) and Projects (1456px) are both far taller
+ * than a typical viewport. Mandatory snapping made it impossible to rest the
+ * scroll inside them — the browser kept yanking back to a section boundary,
+ * so scrolling through the project grid fought the user the whole way.
+ */
 #snap-scroll {
-  scroll-snap-type: y mandatory;
-}
-
-#snap-scroll section {
-  scroll-snap-align: start;
+  scroll-snap-type: none;
 }
 
 /* Filter Buttons */
@@ -952,6 +832,16 @@ body.loaded #loader {
   margin-bottom: 1rem;
 }
 
+/*
+ * The custom '▹' marker below is drawn with ::before, so the native list
+ * marker has to be switched off — otherwise every item renders two bullets.
+ * The global `* { padding: 0 }` reset hid this on some browsers by pulling the
+ * native marker outside the visible box, but it still painted.
+ */
+.timeline-description {
+  list-style: none;
+}
+
 .timeline-description li {
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
@@ -1003,11 +893,8 @@ body.loaded #loader {
 }
 
 /* Disable self-hover on the inner card to prevent conflict/flicker */
-.project-card-link .project-card:hover {
-  transform: none;
-  box-shadow: 0 4px 20px var(--shadow-color);
-  border-color: var(--border-color);
-}
+/* The lift above is driven by the parent link only; the card must not define
+   its own :hover or the two rules cancel out at equal specificity. */
 
 .project-card h3 {
   font-size: 1.3rem;
@@ -1062,7 +949,12 @@ body.loaded #loader {
   max-width: 900px;
 }
 
-/* Disable hover effect for contact section and inner card */
+/*
+ * Disable the section-level hover lift where it fights inner content.
+ * On #projects, scaling the whole section by 1.02 shifted every card under the
+ * pointer, which toggled the card's own hover state and made the grid jitter.
+ */
+#projects:hover,
 #contact:hover,
 #contact .contact-card:hover {
   transform: none !important;
@@ -1075,18 +967,9 @@ body.loaded #loader {
   text-align: center;
 }
 
-.contact-email {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-primary);
-  text-decoration: none;
-  margin: 1.5rem 0;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.contact-email:hover {
-  transform: scale(1.05);
+/* The removed email link used to supply this gap above the icons. */
+.contact-card .social-links {
+  margin-top: 2rem;
 }
 
 /* Scroll Indicator */
@@ -1157,13 +1040,49 @@ body.loaded #loader {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+  /*
+   * The nav leads the page now, so it has to stay thin. Wrapping five links at
+   * phone width cost three rows and ~200px before the hero. Keep it to one row
+   * and let it scroll sideways if the labels do not fit.
+   */
   nav {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.75rem 1.25rem;
-    width: 90%;
-    margin-top: 1rem;
-    top: 1rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0.35rem 0.4rem;
+    /* fit-content so the pill hugs the links and stays centred when they fit,
+       and falls back to scrolling only on very narrow screens. */
+    width: fit-content;
+    max-width: 96%;
+    margin: 0.75rem auto;
+    top: 0.75rem;
+  }
+
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*
+   * The nav pill now spans most of the width at the top, where it collided
+   * with the fixed theme toggle. Drop the toggle to the bottom-right, which
+   * also puts it in easy thumb reach.
+   */
+  #theme-toggle {
+    top: auto;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+  }
+
+  nav a {
+    padding: 0.35rem 0.4rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
   }
 
   header {
@@ -1215,61 +1134,35 @@ body.loaded #loader {
     order: 1;
   }
 
-  /*
-   * Shrink the portrait so the photo plus the full orbit ring fits inside the
-   * section's content box on a phone. At 390px the content box is ~322px, and
-   * the desktop sizing (320px photo + 160px orbit radius) put the outermost
-   * icons ~15px past the screen edge, where they were clipped.
-   */
   .image-wrapper {
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
   }
 
-  .tech-orbit {
-    width: 100%;
-    height: 100%;
-    /* Simplify for mobile */
-    animation: none;
-  }
 
-  .tech-orbit::before,
-  .tech-orbit::after {
-    display: none;
-    /* Hide complex rings on mobile */
-  }
 
-  .tech-icon {
-    /* 2 x (125 + 22) = 294px total, comfortably inside the content box. */
-    --orbit-r: 125px;
-    width: 44px;
-    height: 44px;
-    font-size: 1.25rem;
-    animation: none;
-  }
 
   .project-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/*
- * Narrow phones (iPhone SE and similar, 320px). The content box is only ~256px
- * wide here, so the portrait and its orbit need another step down.
- */
+/* Narrow phones (iPhone SE and similar, 320px). */
 @media (max-width: 380px) {
-  .image-wrapper {
-    width: 200px;
-    height: 200px;
+  nav {
+    padding: 0.3rem 0.15rem;
   }
 
-  .tech-icon {
-    /* 2 x (100 + 20) = 240px, inside the ~256px content box. */
-    --orbit-r: 100px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
+  nav a {
+    padding: 0.3rem 0.27rem;
+    font-size: 0.68rem;
   }
+
+  .image-wrapper {
+    width: 240px;
+    height: 240px;
+  }
+
 
   .gradient-text {
     font-size: 2.1rem;
@@ -1296,16 +1189,7 @@ body.loaded #loader {
   /* Ensure no external margins */
 }
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.5s ease;
-}
+
 
 /* Project card hover effects are handled by the parent link. */
 
@@ -1348,7 +1232,6 @@ body.loaded #loader {
   }
 
   /* Purely decorative motion — no final state to preserve. */
-  .tech-icon,
   .profile-img,
   .logo-ring,
   .logo-ring::before,
